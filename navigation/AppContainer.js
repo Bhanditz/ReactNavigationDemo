@@ -9,7 +9,10 @@ class HomeScreen extends React.Component {
                 <Text>Home Screen</Text>
                 <Button
                     title='Go to Details'
-                    onPress={() => this.props.navigation.navigate('Details')}
+                    onPress={() => this.props.navigation.navigate('Details', {
+                        itemId: 86,
+                        otherParam: 'anything you want here',
+                    })}
                 />
             </View>
         );
@@ -18,12 +21,22 @@ class HomeScreen extends React.Component {
 
 class DetailsScreen extends React.Component {
     render() {
+        const { navigation } = this.props;
+
+        // 也可以使用this.props.navigation.state.params，但是需要处理一些异常时情况
+        const itemId = navigation.getParam('itemId', 'NO-ID');
+        const otherParam = navigation.getParam('otherParam', 'some default value');
+
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <Text>Details Screen</Text>
+                <Text>itemId: {JSON.stringify(itemId)}</Text>
+                <Text>otherParam: {JSON.stringify(otherParam)}</Text>
                 <Button
                     title='Go to Details ...again'
-                    onPress={() => this.props.navigation.push('Details')}  // 如果使用this.props.navigation.navigate，将不起作用
+                    onPress={() => this.props.navigation.push('Details', {  // 如果使用this.props.navigation.navigate，将不起作用
+                        itemId: Math.floor(Math.random() * 100),
+                    })}
                 />
                 <Button
                     title="Go back"

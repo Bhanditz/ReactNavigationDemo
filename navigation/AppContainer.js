@@ -29,6 +29,14 @@ class DetailsScreen extends React.Component {
                     title="Go back"
                     onPress={() => this.props.navigation.goBack()}
                 />
+                <Button
+                    title='Go Home'
+                    onPress={() => this.props.navigation.navigate('Home')}  // 如果使用this.props.navigation.push，将不会销毁其他页面，可以进行返回操作
+                />
+                <Button
+                    title='Go to first screen'
+                    onPress={() => this.props.navigation.popToTop()}
+                />
             </View>
         );
     }

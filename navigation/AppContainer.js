@@ -25,6 +25,10 @@ class DetailsScreen extends React.Component {
                     title='Go to Details ...again'
                     onPress={() => this.props.navigation.push('Details')}  // 如果使用this.props.navigation.navigate，将不起作用
                 />
+                <Button
+                    title="Go back"
+                    onPress={() => this.props.navigation.goBack()}
+                />
             </View>
         );
     }

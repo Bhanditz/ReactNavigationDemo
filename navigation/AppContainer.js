@@ -5,6 +5,13 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Home',
+        headerStyle: {
+            backgroundColor: '#f4511e',  // 标题背景颜色
+        },
+        headerTintColor: '#fff',  // 返回按钮和标题文字的颜色
+        headerTitleStyle: {  // 标题文字样色
+            fontWeight: 'bold',
+        },
     }
 
     render() {

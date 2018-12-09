@@ -1,7 +1,7 @@
 ## React Navigation Demo
 
 ### 说明
-每一个`commit`对应一个知识点
+每一个`commit`对应一个知识点（README.md更新除外）
 
 ### 使用
 - 启动模拟器或连接真机

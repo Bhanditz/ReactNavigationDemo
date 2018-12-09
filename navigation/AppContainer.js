@@ -14,21 +14,24 @@ class LogoTitle extends React.Component {
 }
 
 class HomeScreen extends React.Component {
-    static navigationOptions = {
-        headerTitle: <LogoTitle />,
-        headerRight: (
-            <Button
-                onPress={() => alert('this is a button!')}
-                title='Info'
-                color='#888'  // button背景色
-            />
-        ),
+    static navigationOptions = ({ navigation }) => {
+        return {
+            headerTitle: <LogoTitle />,
+            headerRight: (
+                <Button
+                    onPress={navigation.getParam('increaseCount')}  // 这里get回来的是一个fanction
+                    title='+1'
+                    color='#888'  // button背景色
+                />
+            ),
+        };
     }
 
     render() {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <Text>Home Screen</Text>
+                <Text>Count: {this.state.count}</Text>
                 <Button
                     title='Go to Details'
                     onPress={() => this.props.navigation.navigate('Details', {
@@ -38,6 +41,18 @@ class HomeScreen extends React.Component {
                 />
             </View>
         );
+    }
+
+    componentDidMount() {
+        this.props.navigation.setParams({ increaseCount: this._increaseCount });
+    }
+
+    state = {
+        count: 0,
+    }
+
+    _increaseCount = () => {
+        this.setState({ count: this.state.count + 1 });
     }
 }
 

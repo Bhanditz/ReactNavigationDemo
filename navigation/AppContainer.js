@@ -60,6 +60,10 @@ class DetailsScreen extends React.Component {
                     title='Go to first screen'
                     onPress={() => this.props.navigation.popToTop()}
                 />
+                <Button
+                    title='Update the title'
+                    onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
+                />
             </View>
         );
     }

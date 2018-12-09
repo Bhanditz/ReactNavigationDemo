@@ -15,7 +15,14 @@ class LogoTitle extends React.Component {
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
-        headerTitle: <LogoTitle />
+        headerTitle: <LogoTitle />,
+        headerRight: (
+            <Button
+                onPress={() => alert('this is a button!')}
+                title='Info'
+                color='#888'  // button背景色
+            />
+        ),
     }
 
     render() {

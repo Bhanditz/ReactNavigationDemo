@@ -24,9 +24,16 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({navigation, navigationOptions}) => {
+        const { params } = navigation.state;
+
         return {
-            title: navigation.getParam('otherParam', 'A Nested Details Screen'),
+            title: params ? params.otherParam : 'A Nested Details Screen',
+            // 反转背景和标题的颜色
+            headerStyle: {
+                backgroundColor: navigationOptions.headerTintColor,
+            },
+            headerTintColor: navigationOptions.headerStyle.backgroundColor,
         };
     }
 

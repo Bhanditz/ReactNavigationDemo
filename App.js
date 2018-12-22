@@ -7,12 +7,14 @@
  */
 
 import React, {Component} from 'react';
-import AppContainer from './navigation/AppContainer';
+// import AppContainer from './navigation/AppContainer';
+import TabNavigation from './navigation/TabNavigation';
 
 export default class App extends Component {
   render() {
     return (
-      <AppContainer />
+      // <AppContainer />
+      <TabNavigation />
     );
   }
 }

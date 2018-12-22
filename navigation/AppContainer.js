@@ -16,7 +16,14 @@ class LogoTitle extends React.Component {
 class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            headerTitle: <LogoTitle />,
+            // headerTitle: <LogoTitle />,
+            headerLeft: (
+                <Button
+                    onPress={() => navigation.navigate('MyModal')}
+                    title='MyModal'
+                    color='#666'
+                />
+            ),
             headerRight: (
                 <Button
                     onPress={navigation.getParam('increaseCount')}  // 这里get回来的是一个fanction
@@ -108,23 +115,48 @@ class DetailsScreen extends React.Component {
         );
     }
 }
+
+class ModalScreen extends React.Component {
+    render() {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+                <Button
+                    onPress={() => this.props.navigation.goBack()}
+                    title='Dismiss'
+                />
+            </View>
+        )
+    }
+}
+
+const MainStack = createStackNavigator({
+    Home: {
+        screen: HomeScreen,
+    },
+    Details: {
+        screen: DetailsScreen,
+    },
+},{
+    initialRouteName: "Home",  // 初始路由
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: '#f4511e',  // 标题背景颜色
+        },
+        headerTintColor: '#fff',  // 返回按钮和标题文字的颜色
+        headerTitleStyle: {  // 标题文字样色
+            fontWeight: 'bold',
+        },
+    }
+});
   
 const RootStack = createStackNavigator(
     {
-        Home: HomeScreen,
-        Details: DetailsScreen,
-    },
-    {
-        initialRouteName: "Home",  // 初始路由
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: '#f4511e',  // 标题背景颜色
-            },
-            headerTintColor: '#fff',  // 返回按钮和标题文字的颜色
-            headerTitleStyle: {  // 标题文字样色
-                fontWeight: 'bold',
-            },
-        }
+        Main: MainStack,
+        MyModal: ModalScreen,
+    }, {
+        mode: 'modal',
+        headerMode: 'none',
     }
 );
   

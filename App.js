@@ -8,13 +8,15 @@
 
 import React, {Component} from 'react';
 // import AppContainer from './navigation/AppContainer';
-import TabNavigation from './navigation/TabNavigation';
+// import TabNavigation from './navigation/TabNavigation';
+import DrawerNavigation from './navigation/DrawerNavigation';
 
 export default class App extends Component {
   render() {
     return (
       // <AppContainer />
-      <TabNavigation />
+      // <TabNavigation />
+      <DrawerNavigation />
     );
   }
 }

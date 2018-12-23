@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
@@ -8,6 +8,10 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Home!</Text>
+                <Button
+                    title='Go to Settings'
+                    onPress={() => this.props.navigation.navigate('Settings')}
+                />
             </View>
         )
     }
@@ -18,6 +22,10 @@ class SettingsScreen extends React.Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Settings!</Text>
+                <Button
+                    title='Go to Home'
+                    onPress={() => this.props.navigation.navigate('Home')}
+                />
             </View>
         )
     }
